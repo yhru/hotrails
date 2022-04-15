@@ -6,23 +6,25 @@ class QuotesTest < ApplicationSystemTestCase
   end
 
   test "Creating a new quote" do
-    # when visiting the index we expect to see "Quotes" as title
+    # When we visit the Quotes#index page
+    # we expect to see a title with the text "Quotes"
     visit quotes_path
     assert_selector "h1", text: "Quotes"
 
-    # when clicking on "New Quote" we expect to land on a page with
-    # a page title of "New Quote"
-    click_on "New Quote"
-    assert_selector "h1", text: "New Quote"
+    # When we click on the link with the text "New quote"
+    # we expect to land on a page with the title "New quote"
+    click_on "New quote"
+    assert_selector "h1", text: "New quote"
 
-    # when filling out the form and submitting it...
-    fill_in "Name", with: "Ubuntu 22.04"
+    # When we fill in the name input with "Capybara quote"
+    # and we click on "Create Quote"
+    fill_in "Name", with: "Capybara quote"
     click_on "Create quote"
 
-    # ...we expect to be back on the index page with a new quote
-    # called "Ubuntu 22.04"
+    # We expect to be back on the page with the title "Quotes"
+    # and to see our "Capybara quote" added to the list
     assert_selector "h1", text: "Quotes"
-    assert_text "Ubuntu 22.04"
+    assert_text "Capybara quote"
   end
 
   test "Showing a quote" do

@@ -1,0 +1,7 @@
+// folder where we'll add Sass mixins.
+
+@mixin media($query) {
+  @if $query == tabletAndUp {
+    @media (min-width: 50rem) { @content; }
+  }
+}
